@@ -1,6 +1,7 @@
 #include <iostream>
 #include "Common/OpenGl.h"
-#include "Shaders/basic/BasicShader.h"
+#include "Common/Log.h"
+#include "Shaders/Shader.h"
 
 // Test Triangle
 unsigned int VBO;
@@ -13,7 +14,7 @@ float vertices[] = {
 
 int main(int, char**) {
     if (SDL_Init(SDL_INIT_EVERYTHING) <  0) {
-        std::cout << "Could not initialize, ERROR: " << SDL_GetError() << std::endl;
+        Log("Could not initialize, ERROR: ", SDL_GetError());
         return EXIT_FAILURE;
     }
 
@@ -24,11 +25,11 @@ int main(int, char**) {
     );
 
     if (window == NULL) {
-        std::cout << "Could not create window, ERROR: " << SDL_GetError() << std::endl;
+        Log("Could not create window, ERROR: ", SDL_GetError());
         return EXIT_FAILURE;
     }
 
-    BasicShader laShader;
+    Shader laShader("./BasicShader.vert", "./BasicShader.frag");
 
     SDL_GL_SetAttribute(SDL_GL_CONTEXT_MAJOR_VERSION, 3);
     SDL_GL_SetAttribute(SDL_GL_CONTEXT_MINOR_VERSION, 3);
@@ -51,7 +52,7 @@ int main(int, char**) {
             }
         }
 
-        laShader.use();
+        // laShader.use();
 
         glClearColor(1.0f, 0.3f, 0.3f, 1.0f);
         glClear(GL_COLOR_BUFFER_BIT);

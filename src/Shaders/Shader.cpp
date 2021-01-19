@@ -6,8 +6,7 @@
 
 class Shader 
 {
-    public: 
-        unsigned int ID; 
+    public: unsigned int ID; 
 
     public: Shader(const char* vertexPath, const char* fragmentPath) {
         const char* vertexShader = loadAndReadShaderFile(vertexPath);
@@ -28,8 +27,7 @@ class Shader
         {
             char infoLog[512];
             glGetProgramInfoLog(ID, 512, NULL, infoLog);
-            Log(strcat("Program failed to compile\n", infoLog));
-        
+            Log("Program failed to compile\n", infoLog);
         }
 
         glDeleteShader(vertexId);
@@ -54,7 +52,9 @@ class Shader
             Log("Error reading shader file");
         }
 
-        return shaderCode.c_str();
+        const char* code = shaderCode.c_str();
+
+        return code;
     }
 
     private: void createAndAttachShader(unsigned int shaderId, const char* shaderCode) {
@@ -66,7 +66,7 @@ class Shader
         {
             char infoLog[512];
             glGetShaderInfoLog(shaderId, 512, NULL, infoLog);
-            Log(strcat("Shader failed to compile\n", infoLog));
+            Log("Shader failed to compile\n", infoLog);
         };
         glAttachShader(ID, shaderId);
     }
