@@ -14,6 +14,5 @@ class Shader
         void use();
 
     private: 
-        const char* loadAndReadShaderFile(const char* shaderPath);
-        void createAndAttachShader(unsigned int shaderId, const char* shaderCode);
+        void createAndAttachShader(const char* shaderPath, unsigned int shaderId);
 };

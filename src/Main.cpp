@@ -1,7 +1,7 @@
 #include <iostream>
 #include "Common/OpenGl.h"
 #include "Common/Log.h"
-#include "Shaders/Shader.h"
+#include "Shaders/Basic/BasicShader.h"
 
 // Test Triangle
 unsigned int VBO;
@@ -29,8 +29,6 @@ int main(int, char**) {
         return EXIT_FAILURE;
     }
 
-    Shader laShader("./BasicShader.vert", "./BasicShader.frag");
-
     SDL_GL_SetAttribute(SDL_GL_CONTEXT_MAJOR_VERSION, 3);
     SDL_GL_SetAttribute(SDL_GL_CONTEXT_MINOR_VERSION, 3);
     SDL_GL_SetAttribute(SDL_GL_CONTEXT_PROFILE_MASK, SDL_GL_CONTEXT_PROFILE_CORE);
@@ -45,6 +43,9 @@ int main(int, char**) {
     glBufferData(GL_ARRAY_BUFFER, sizeof(vertices), vertices, GL_STATIC_DRAW);
     //
 
+    // Must be initialized after the context
+    BasicShader basicShader;
+
     while(true) {
         if (SDL_PollEvent(&event)) {
             if (SDL_QUIT == event.type) {
@@ -52,7 +53,7 @@ int main(int, char**) {
             }
         }
 
-        // laShader.use();
+        basicShader.use();
 
         glClearColor(1.0f, 0.3f, 0.3f, 1.0f);
         glClear(GL_COLOR_BUFFER_BIT);

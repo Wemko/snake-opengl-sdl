@@ -1,6 +1,8 @@
-#include "../Shader.h"
+#include "BasicShader.h"
 
-class BasicShader : public Shader {
-    public: BasicShader() : Shader("./BasicShader.vert", "./BasicShader.frag"){
-    }
-};
+
+BasicShader::BasicShader() : Shader(
+    "/Users/Wemko/Documents/ProjectMap/snake-opengl-sdl/src/Shaders/Basic/BasicShader.vert", 
+    "/Users/Wemko/Documents/ProjectMap/snake-opengl-sdl/src/Shaders/Basic/BasicShader.frag"
+) {
+}
