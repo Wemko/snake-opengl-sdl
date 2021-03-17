@@ -31,6 +31,7 @@ void Shader::createAndAttachShader(const char* shaderPath, unsigned int shaderId
     std::stringstream shaderStream;
     std::string shaderCode;
     std::ifstream shaderFile;
+    int success;
     
     try {
         shaderFile.open(shaderPath);
