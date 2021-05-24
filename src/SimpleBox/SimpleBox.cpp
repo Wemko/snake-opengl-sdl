@@ -45,6 +45,10 @@ float SimpleBox::vertices[] = {
 };
 
 SimpleBox::SimpleBox() {
+    if(&basicShader == NULL) {
+        basicShader = BasicShader();
+    }
+
     glGenVertexArrays(1, &VAO);
 
     glGenBuffers(1, &VBO);
@@ -66,6 +70,18 @@ SimpleBox::SimpleBox() {
 };
 
 void SimpleBox::render() {
+    basicShader.use();
+    
+    glm::mat4 trans = glm::mat4(1.0f);
+    trans = glm::translate(trans, getTransform());
+    trans = glm::scale(trans, getScale());
+    trans = glm::rotate(trans, glm::radians(getRotation().x), glm::vec3(1,0,0));
+    trans = glm::rotate(trans, glm::radians(getRotation().y), glm::vec3(0,1,0));
+    trans = glm::rotate(trans, glm::radians(getRotation().z), glm::vec3(0,0,1));
+
+    unsigned int transformLoc = glGetUniformLocation(basicShader.ID, "transform");
+    glUniformMatrix4fv(transformLoc, 1.0f, GL_FALSE, glm::value_ptr(trans));
+
     glBindVertexArray(VAO);
     glDrawArrays(GL_TRIANGLES, 0, 36);
 }

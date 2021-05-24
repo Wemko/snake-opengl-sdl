@@ -7,13 +7,13 @@ class GameObject {
         GameObject();
 
         glm::vec3 getTransform();
-        void setTransform(glm::vec3 t);
+        void setTransform(float x, float y, float z);
 
         glm::vec3 getScale();
-        void setScale(glm::vec3 s);
+        void setScale(float x, float y, float z);
 
         glm::vec3 getRotation();
-        void setRotation(glm::vec3 r);
+        void setRotation(float x, float y, float z);
 
     private:
         glm::vec3 transform;

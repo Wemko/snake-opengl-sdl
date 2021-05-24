@@ -31,8 +31,11 @@ int main(int, char**) {
     SDL_Event event;
     // Triangle test
     // Must be initialized after the context
-    BasicShader basicShader;
+    // BasicShader basicShader;
     SimpleBox simpleBox;
+    simpleBox.setTransform(0.25f, 0, 0);
+    simpleBox.setScale(0.5f, 0.5f, 0);
+    simpleBox.setRotation(0, 45, 45);
 
     while(true) {
         if (SDL_PollEvent(&event)) {
@@ -44,7 +47,7 @@ int main(int, char**) {
         glClearColor(1.0f, 0.3f, 0.3f, 1.0f);
         glClear(GL_COLOR_BUFFER_BIT);
 
-        basicShader.use();
+        // basicShader.use();
 
         simpleBox.render();
 
