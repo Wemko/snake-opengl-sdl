@@ -1,0 +1,3 @@
+set(SHADERS_BASIC_SOURCES BasicShader.cpp)
+
+add_library(SHADERS_BASIC ${SHADERS_BASIC_SOURCES})

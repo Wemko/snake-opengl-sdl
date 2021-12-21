@@ -1,0 +1,3 @@
+set(GAME_OBJECT_SOURCE GameObject.cpp)
+
+add_library(GAME_OBJECT ${GAME_OBJECT_SOURCE})
