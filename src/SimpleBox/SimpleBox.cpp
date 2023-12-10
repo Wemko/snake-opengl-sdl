@@ -78,11 +78,13 @@ void SimpleBox::render() {
     trans = glm::translate(trans, getTransform());
 
     trans = glm::scale(trans, getScale());
-    trans = glm::rotate(trans, ((float)SDL_GetTicks() / 1000) * glm::radians(50.0f), glm::vec3(0.5f, 1.0f, 0.0f));
+    trans = glm::rotate(trans, glm::radians(getRotation().x), glm::vec3(1.0, 0.0f, 0.0f));
+    trans = glm::rotate(trans, glm::radians(getRotation().y), glm::vec3(0.0, 1.0f, 0.0f));
+    trans = glm::rotate(trans, glm::radians(getRotation().z), glm::vec3(0.0, 0.0f, 1.0f));
 
     // TODO make a camera class that handles the view.
     glm::mat4 view = glm::mat4(1.0f);
-    view = glm::translate(view, glm::vec3(0.0f, 0.0f, -5.0f));
+    view = glm::translate(view, glm::vec3(0.0f, 0.0f, -30.0f));
 
     glm::mat4 projection = glm::mat4(1.0f);
     projection = glm::perspective(glm::radians(45.0f), 640.0f / 480.0f, 0.1f, 100.0f);

@@ -26,10 +26,15 @@ add_subdirectory(src/Common)
 add_subdirectory(src/GameObject)
 add_subdirectory(src/SimpleBox)
 add_subdirectory(src/Shaders)
+add_subdirectory(src/InputSystem)
+
+# TODO: Remove if snake game is done
+add_subdirectory(src/SnakeGame)
+
 
 add_executable(SnakeSdl src/main.cpp)
 
-target_link_libraries(SnakeSdl glad COMMON SHADER SHADER_BASIC GAME_OBJECT SIMPLE_BOX)
+target_link_libraries(SnakeSdl glad COMMON SHADER SHADER_BASIC GAME_OBJECT SIMPLE_BOX INPUT_SYSTEM SNAKE_GAME)
 
 if (APPLE) 
     target_link_libraries(SnakeSdl "-framework OpenGL")

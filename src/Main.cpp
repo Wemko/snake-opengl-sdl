@@ -1,11 +1,23 @@
+#include <chrono>
 #include <iostream>
 #include <glm/glm.hpp>
 #include "Common/OpenGl.h"
 #include "Common/Log.h"
 #include "Shaders/Basic/BasicShader.h"
 #include "SimpleBox/SimpleBox.h"
+#include "InputSystem/InputSystem.h"
+#include "SnakeGame/SnakeGame.h"
+
+uint64_t timeSinceEpochMillisec() {
+    using namespace std::chrono;
+    return duration_cast<nanoseconds>(system_clock::now().time_since_epoch()).count();
+}
 
 int main(int, char**) {
+    bool running = true;
+    float delta = 0.0f;
+    uint64_t previousEpoch = timeSinceEpochMillisec();
+    
     SDL_SetMainReady();
 
     if (SDL_Init(SDL_INIT_EVERYTHING) <  0) {
@@ -44,36 +56,27 @@ int main(int, char**) {
     glClear(GL_DEPTH_BUFFER_BIT);
     glEnable(GL_DEPTH_TEST);
     glDepthMask(GL_TRUE);
-    // glEnable(GL_CULL_FACE);
-    // glCullFace(GL_FRONT);  
 
-    SDL_Event event;
+    InputSystem* inputSystem = InputSystem::getInstance();
+
+    SnakeGame snakeGame;
+
     
-    SimpleBox simpleBox;
-    simpleBox.setTransform(1, 0, 0);
-    simpleBox.setScale(0.5f, 0.5f, 0);
-    simpleBox.setRotation(0, 45, 45);
 
-    SimpleBox simpleBox2;
-    simpleBox2.setTransform(-0.5f, 0, 0);
-    simpleBox2.setScale(0.5f, 0.5f, 0);
-    simpleBox2.setRotation(0, 45, 45);
+    while(running) {
+        running = inputSystem->PollInputEvents();
 
-    while(true) {
-        if (SDL_PollEvent(&event)) {
-            if (SDL_QUIT == event.type) {
-                    break;
-            }
-        }
+        delta = (timeSinceEpochMillisec() - previousEpoch) / 1000000.0f;
 
         glClearDepth(GL_DEPTH_BUFFER_BIT);
         glClearColor(0.0f, 0.0f, 0.0f, 1.0f);
         glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 
-        simpleBox.render();
-        simpleBox2.render();
+        snakeGame.tick(&delta);
 
         SDL_GL_SwapWindow(window);
+        
+        previousEpoch = timeSinceEpochMillisec();
     }
 
     SDL_DestroyWindow(window);

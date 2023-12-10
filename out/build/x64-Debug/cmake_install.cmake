@@ -38,6 +38,8 @@ if(NOT CMAKE_INSTALL_LOCAL_ONLY)
   include("C:/Users/Wemko/Documents/ProjectMap/snake-opengl-sdl/out/build/x64-Debug/src/GameObject/cmake_install.cmake")
   include("C:/Users/Wemko/Documents/ProjectMap/snake-opengl-sdl/out/build/x64-Debug/src/SimpleBox/cmake_install.cmake")
   include("C:/Users/Wemko/Documents/ProjectMap/snake-opengl-sdl/out/build/x64-Debug/src/Shaders/cmake_install.cmake")
+  include("C:/Users/Wemko/Documents/ProjectMap/snake-opengl-sdl/out/build/x64-Debug/src/InputSystem/cmake_install.cmake")
+  include("C:/Users/Wemko/Documents/ProjectMap/snake-opengl-sdl/out/build/x64-Debug/src/SnakeGame/cmake_install.cmake")
 
 endif()
 

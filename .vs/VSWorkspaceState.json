@@ -4,10 +4,12 @@
     "\\out",
     "\\src",
     "\\src\\GameObject",
+    "\\src\\InputSystem",
     "\\src\\Shaders",
     "\\src\\Shaders\\basic",
-    "\\src\\SimpleBox"
+    "\\src\\SimpleBox",
+    "\\src\\SnakeGame"
   ],
-  "SelectedNode": "\\CMakeLists.txt",
+  "SelectedNode": "\\src\\Main.cpp",
   "PreviewInSolutionExplorer": false
 }

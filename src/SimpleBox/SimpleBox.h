@@ -8,8 +8,8 @@
 #include <glm/gtc/type_ptr.hpp>
 #include <glm/gtx/string_cast.hpp>
 
-class SimpleBox : public GameObject {
-
+class SimpleBox : public GameObject 
+{
     public: 
         SimpleBox();
         void render();

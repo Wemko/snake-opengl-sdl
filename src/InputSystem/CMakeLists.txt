@@ -1,0 +1,3 @@
+set(INPUT_SYSTEM_SOURCE InputSystem.cpp)
+
+add_library(INPUT_SYSTEM ${INPUT_SYSTEM_SOURCE})

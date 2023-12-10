@@ -1,0 +1,2 @@
+set(SNAKE_GAME_SOURCES SnakeGame.cpp)
+add_library(SNAKE_GAME ${SNAKE_GAME_SOURCES})
