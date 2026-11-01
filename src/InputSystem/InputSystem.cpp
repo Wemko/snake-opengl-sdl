@@ -10,7 +10,7 @@ InputSystem* InputSystem::getInstance() {
 }
 
 bool InputSystem::GetInputDown(SDL_Scancode scanCode) {
-    const Uint8* keyboardState = SDL_GetKeyboardState(NULL);
+    const bool* keyboardState = SDL_GetKeyboardState(NULL);
 
     return keyboardState[scanCode];
 }
@@ -18,15 +18,15 @@ bool InputSystem::GetInputDown(SDL_Scancode scanCode) {
 bool InputSystem::PollInputEvents() {
     SDL_Event event;
     while(SDL_PollEvent(&event)) {
-        if(event.type == SDL_QUIT) {
+        if(event.type == SDL_EVENT_QUIT) {
             return false;
         }
 
         switch (event.type) {
-            case SDL_KEYDOWN:
+            case SDL_EVENT_KEY_DOWN:
                // Can be used to trigger events for key down.
                 break;
-            case SDL_KEYUP:
+            case SDL_EVENT_KEY_UP:
                 // Can be used to trigger events for key down.
                 break;
         }

@@ -1,8 +1,8 @@
 #include "BasicShader.h"
 
-
+// SHADER_DIR is set in CMakeLists.txt to this folder, so the path follows the project if it moves.
 BasicShader::BasicShader() : Shader(
-    "/Users/Wemko/Documents/ProjectMap/snake-opengl-sdl/src/Shaders/Basic/BasicShader.vert", 
-    "/Users/Wemko/Documents/ProjectMap/snake-opengl-sdl/src/Shaders/Basic/BasicShader.frag"
+    SHADER_DIR "BasicShader.vert",
+    SHADER_DIR "BasicShader.frag"
 ) {
 }
